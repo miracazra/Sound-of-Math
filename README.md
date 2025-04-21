@@ -66,6 +66,3 @@ Designed for learners, educators, and curious minds, the project aims to make ma
 University of Washington Bothell  
 Applied Computing Major | Math Minor  
 [LinkedIn](https://www.linkedin.com/in/mirac-azra-ezgin-20a9bb310/)
-
-
-
