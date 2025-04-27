@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sound of Math</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/tone@latest/build/Tone.js"></script>
+</head>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAatSsPI-Y8V1LysK_aj-0CbxP64DdsqPs",
+    authDomain: "sound-of-math.firebaseapp.com",
+    projectId: "sound-of-math",
+    storageBucket: "sound-of-math.appspot.com",
+    messagingSenderId: "461875022957",
+    appId: "1:461875022957:web:ac41f4d02429d8a3204364"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+</script>
+<body>
+  <div class="auth-container">
+    <div class="auth-row">
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+    </div>
+    <div class="auth-row">
+      <div class="password-toggle">
+        <input type="checkbox" id="show-password" />
+        <label for="show-password">Show Password</label>
+      </div>
+      <button id="signup-btn">Sign Up</button>
+      <button id="login-btn">Log In</button>
+    </div>
+    <a href="#" id="forgot-password" style="color: purple; font-weight: bold;">Forgot Password?</a>
+    <p id="user-status">Not logged in</p>
+    <label for="level-select" style="margin-top: 0.5rem; font-weight: bold;">Choose Level:</label>
+    <select id="level-select">
+      <option value="beginner">🎈 Beginner</option>
+      <option value="intermediate">🚀 Intermediate</option>
+      <option value="advanced">🧠 Advanced</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <h1>🔊 Sound of Math</h1>
+    <p>Turn math patterns into fun melodies 🎵</p>
+    <label for="pattern-select">Choose a Pattern:</label>
+    <select id="pattern-select">
+      <option value="squares">x²</option>
+      <option value="fibonacci">Fibonacci</option>
+      <option value="primes">Prime Numbers</option>
+    </select>
+    <button id="play-btn">▶ Play Melody</button>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
