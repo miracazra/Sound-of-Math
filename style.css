@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 220px; /* space for fixed login bar */
+  }
+  
+  .auth-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .container {
+    background: white;
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .auth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .auth-container input {
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+    width: 160px;
+  }
+  
+  .auth-container button {
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-container button:hover {
+    background-color: #5a0eb5;
+  }
+  
+  .auth-container p {
+    font-size: 0.85rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    color: #6a11cb;
+    text-align: center;
+  }
+  
+  p {
+    color: #444;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  button {
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5a0eb5;
+  }
+  
+  .password-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  #signup-btn, #login-btn {
+    padding: 0.5rem 1rem;
+    background-color: #8000d7;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  body.beginner {
+    background: linear-gradient(to right, #fceabb, #f8b500);
+    font-family: "Comic Neue", cursive;
+    color: #333;
+  }
+  
+  body.intermediate {
+    background: linear-gradient(to right, #c9ffbf, #ffafbd);
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  body.advanced {
+    background: #f0f0f0;
+    font-family: "Roboto", sans-serif;
+    color: #000;
+  }
+  

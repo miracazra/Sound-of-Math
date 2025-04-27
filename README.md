@@ -5,7 +5,6 @@ It transforms mathematical patterns into melodies using JavaScript and audio syn
 Designed for learners, educators, and curious minds, the project aims to make math interactive, musical, and meaningful.
 
 ---
-
 ## 📌 Project Summary
 
 - 🎓 **Capstone Project** for the Applied Computing major at UW Bothell
