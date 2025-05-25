@@ -7,24 +7,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 220px; /* space for fixed login bar */
+    padding-top: 40px; /* space for fixed login bar */
+    body.beginner {
+      padding-top: 0px; /* or 0px if you want it all the way up */
+    }
+    
   }
   
   .auth-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1rem 2rem;
-    border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
   }
+  
+  .auth-container.collapsed {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
   
   .container {
     background: white;
@@ -41,17 +40,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
   }
   
   .auth-container input {
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 0.85rem;
-    width: 160px;
+    #email,
+    #password {
+      all: unset;
+      box-sizing: border-box;
+      height: 3rem;
+      padding: 0 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      background-color: white;
+      width: 180px; /* or more if needed */
+    }          
   }
+
   
   .auth-container button {
     background-color: #6a11cb;
@@ -97,8 +105,8 @@ body {
   
   select {
     padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
+    border-radius: 1rem;
+    border: 5px solid #ccc;
     font-size: 1rem;
     width: 100%;
     margin-bottom: 1.5rem;
@@ -120,9 +128,9 @@ body {
   }
   
   .password-toggle {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.3rem;
+    margin-left: 20px;
   }
   
   #signup-btn, #login-btn {
@@ -130,25 +138,125 @@ body {
     background-color: #8000d7;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: -20px;
     font-weight: bold;
     cursor: pointer;
   }
   
+  
   body.beginner {
-    background: linear-gradient(to right, #fceabb, #f8b500);
-    font-family: "Comic Neue", cursive;
-    color: #333;
+    background-image: url("images/beginner.png");
+    background-size: 57% auto;       /* Shrinks the image width slightly */
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #5ec5f4;          /* fallback in case image fails */
   }
+  
+
   
   body.intermediate {
-    background: linear-gradient(to right, #c9ffbf, #ffafbd);
-    font-family: "Segoe UI", sans-serif;
+    background-image: url("images/intermediate.jpg");
+    background-size: 70% auto;       /* Shrinks the image width slightly */
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #f1ece0;          /* fallback in case image fails */
   }
+  
   
   body.advanced {
-    background: #f0f0f0;
-    font-family: "Roboto", sans-serif;
-    color: #000;
+    background-image: url("images/advanced.png");
+    background-size: 50% auto;       /* Shrinks the image width slightly */
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #1a4b36;          /* fallback in case image fails */
   }
   
+  
+  
+  #toggle-auth {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+.auth-row.space-between {
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.level-row {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.3rem;
+}
+
+  
+  .toggle-label {
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .level-select-wrapper select {
+    width: 400px; /* or 250px if you want even wider */
+  }
+  
+  
+ .canvas-wrapper {
+  position: absolute;
+  top: 180px;    /* adjust to match the top of the blank */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+#spiralCanvas {
+  width: 280px;  /* adjust to fit inside the blank white box */
+  height: 280px;
+  border: none;
+  background: transparent;
+}
+
+.main-ui {
+  display: none; /* starts hidden by default on home */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.auth-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-ui {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-info h2, .home-info h3 {
+  color: #6a11cb;
+}
+
+.home-info ol li {
+  margin: 0.5rem 0;
+}

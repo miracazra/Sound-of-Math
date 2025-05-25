@@ -7,60 +7,70 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/tone@latest/build/Tone.js"></script>
 </head>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAatSsPI-Y8V1LysK_aj-0CbxP64DdsqPs",
-    authDomain: "sound-of-math.firebaseapp.com",
-    projectId: "sound-of-math",
-    storageBucket: "sound-of-math.appspot.com",
-    messagingSenderId: "461875022957",
-    appId: "1:461875022957:web:ac41f4d02429d8a3204364"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-</script>
 <body>
-  <div class="auth-container">
-    <div class="auth-row">
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Password" />
-    </div>
-    <div class="auth-row">
-      <div class="password-toggle">
-        <input type="checkbox" id="show-password" />
-        <label for="show-password">Show Password</label>
-      </div>
+<!-- 👇 AUTH UI GROUP TO HIDE WHEN NOT ON 'HOME' -->
+<div class="auth-ui">
+  <!-- Row 1: Email + Password -->
+  <div class="home-info" style="margin-top: 2rem; max-width: 600px; text-align: center;">
+    <h2>🎓 Welcome to Sound of Math!</h2>
+    <p>This site turns math patterns into fun melodies using music. It's designed for all levels — whether you're a beginner or already love math!</p>
+    <h3 style="margin-top: 1.5rem;">🧭 How to Get Started:</h3>
+    <ol style="text-align: left; margin-top: 0.5rem;">
+      <li>📝 <strong>Log in or sign up</strong> with your email.</li>
+      <li>🎯 <strong>Choose your level</strong> from the dropdown (Beginner, Intermediate, Advanced).</li>
+      <li>🎵 <strong>Explore patterns</strong> from a wide range of math topics.</li>
+      <li>▶ <strong>Click "Play Melody"</strong> to hear the math come alive!</li>
+      <li>❤️ <strong>Save your favorites</strong> to listen again later.</li>
+    </ol>
+    <p style="margin-top: 1rem;">Have fun learning through sound! 🎶</p>
+  </div>
+  <div class="auth-row">
+    <input type="email" id="email" placeholder="Email" style="height: 1.5rem;" />
+    <input type="password" id="password" placeholder="Password" style="height: 1.5rem;" />
+  </div>
+  <!-- Row 2: Show Password + Buttons -->
+  <div class="auth-row space-between">
+    <label class="toggle-label">
+      <input type="checkbox" id="show-password" />
+      Show Password
+    </label>
+    <div class="button-group">
       <button id="signup-btn">Sign Up</button>
       <button id="login-btn">Log In</button>
     </div>
-    <a href="#" id="forgot-password" style="color: purple; font-weight: bold;">Forgot Password?</a>
-    <p id="user-status">Not logged in</p>
-    <label for="level-select" style="margin-top: 0.5rem; font-weight: bold;">Choose Level:</label>
+  </div>
+  <!-- Row 3: Forgot Password + Status -->
+  <div class="auth-row space-between">
+    <div>
+      <a href="#" id="forgot-password" style="color: purple; font-weight: bold;">Forgot Password?</a>
+      <span id="user-status" style="margin-left: 14rem;">Not logged in</span>
+    </div>
+  </div>
+</div>
+<!-- 👇 STAYS VISIBLE ALWAYS -->
+<!-- Row 4: Choose Level -->
+<div class="auth-row level-row">
+  <label for="level-select" style="font-weight: bold; font-size: large; margin-left: 9rem;">Choose Level:</label>
+  <div class="level-select-wrapper">
     <select id="level-select">
+      <option value="home">🏠 Home</option>
       <option value="beginner">🎈 Beginner</option>
       <option value="intermediate">🚀 Intermediate</option>
       <option value="advanced">🧠 Advanced</option>
     </select>
   </div>
-
+</div>
+<!-- 👇 MAIN APP UI TO SHOW WHEN NOT ON 'HOME' -->
+<div class="main-ui">
   <div class="container">
     <h1>🔊 Sound of Math</h1>
     <p>Turn math patterns into fun melodies 🎵</p>
     <label for="pattern-select">Choose a Pattern:</label>
-    <select id="pattern-select">
-      <option value="squares">x²</option>
-      <option value="fibonacci">Fibonacci</option>
-      <option value="primes">Prime Numbers</option>
-    </select>
+    <select id="pattern-select"></select>
     <button id="play-btn">▶ Play Melody</button>
   </div>
-
-  <script type="module" src="script.js"></script>
+</div>
+<script type="module" src="script.js"></script>
 </body>
 </html>
+
