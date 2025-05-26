@@ -1732,3 +1732,81 @@ levelSelect.addEventListener("change", (e) => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  // === SETTINGS ===
+  const maxQuestions = 20;
+  const STORAGE_KEY = "ai-usage";
+  const today = new Date().toDateString();
+
+  // === Load or Reset Daily Usage ===
+  let savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (!savedData || savedData.date !== today) {
+    savedData = { date: today, count: 0 };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+  }
+
+  updateRemaining();
+
+  // === Toggle AI Popup ===
+  document.getElementById("ai-toggle").addEventListener("click", () => {
+    const popup = document.getElementById("ai-popup");
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  });
+
+  // === Ask AI ===
+  document.getElementById("ask-btn").addEventListener("click", async () => {
+    const question = document.getElementById("user-input").value.trim();
+    const chatLog = document.getElementById("chat-log");
+
+    if (!question) return;
+
+    // === Limit Check ===
+    if (savedData.count >= maxQuestions) {
+      alert("⚠️ You've reached the daily AI question limit.\n(To protect our $5 budget 💰)");
+      return;
+    }
+
+    savedData.count++;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+    updateRemaining();
+
+    // === Show User Bubble ===
+    const userBubble = document.createElement("div");
+    userBubble.className = "chat-bubble chat-user";
+    userBubble.textContent = question;
+    chatLog.appendChild(userBubble);
+    document.getElementById("user-input").value = "";
+
+    // === AI Thinking Bubble ===
+    const aiBubble = document.createElement("div");
+    aiBubble.className = "chat-bubble chat-ai";
+    aiBubble.textContent = "⏳ Thinking...";
+    chatLog.appendChild(aiBubble);
+
+    chatLog.scrollTop = chatLog.scrollHeight;
+
+    // === Call AI Server ===
+    try {
+      const res = await fetch("http://localhost:3000/ask-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+
+      const data = await res.json();
+      aiBubble.textContent = data.reply || "⚠️ No reply received.";
+    } catch (err) {
+      console.error(err);
+      aiBubble.textContent = "❌ Error connecting to the AI.";
+    }
+
+    chatLog.scrollTop = chatLog.scrollHeight;
+  });
+
+  // === Update Remaining Display ===
+  function updateRemaining() {
+    const remaining = maxQuestions - savedData.count;
+    document.getElementById("question-remaining").textContent =
+      `🧮 ${remaining} question${remaining !== 1 ? "s" : ""} remaining today`;
+  }
+});

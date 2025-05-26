@@ -1,0 +1,26 @@
+{
+  "name": "sound-of-math",
+  "version": "1.0.0",
+  "description": "**Sound of Math** is a capstone web project that brings mathematics to life through sound.  \r It transforms mathematical patterns into melodies using JavaScript and audio synthesis tools.  \r Designed for learners, educators, and curious minds, the project aims to make math interactive, musical, and meaningful.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miracazra/Sound-of-Math.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miracazra/Sound-of-Math/issues"
+  },
+  "homepage": "https://github.com/miracazra/Sound-of-Math#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "openai": "^4.103.0"
+  }
+}

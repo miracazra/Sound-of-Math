@@ -7,6 +7,22 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/tone@latest/build/Tone.js"></script>
 </head>
+
+<!-- AI Button -->
+<button id="ai-toggle" title="Ask the AI 🤖">🤖</button>
+
+<!-- AI Popup -->
+<div id="ai-popup" style="display: none;">
+  <h4>🧠 Ask the AI</h4>
+  <textarea id="user-input" placeholder="Ask a math question..."></textarea>
+  <button id="ask-btn">Ask</button>
+  <div id="chat-log"></div>
+  <p id="question-remaining">🧮 20 questions remaining</p>
+
+
+</div>
+
+
 <body>
 <!-- 👇 AUTH UI GROUP TO HIDE WHEN NOT ON 'HOME' -->
 <div class="auth-ui">
