@@ -1787,7 +1787,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // === Call AI Server ===
     try {
-      const res = await fetch("http://localhost:3000/ask-ai", {
+      const res = await fetch("https://sound-of-math-1.onrender.com/ask-ai", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
